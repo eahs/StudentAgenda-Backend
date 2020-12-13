@@ -103,7 +103,7 @@ namespace ADSBackend
 
             app.UseRouting();
             app.UseStaticFiles();
-
+            
 
             // global cors policy
             app.UseCors(x => x
