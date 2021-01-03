@@ -23,6 +23,8 @@
     <Compile Remove="Migrations\20201213160452_EventMigrate.Designer.cs" />
     <Compile Remove="Migrations\20201213162753_EventMigrate1.cs" />
     <Compile Remove="Migrations\20201213162753_EventMigrate1.Designer.cs" />
+    <Compile Remove="Migrations\20210103011423_AAssignment.cs" />
+    <Compile Remove="Migrations\20210103011423_AAssignment.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
