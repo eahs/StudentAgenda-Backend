@@ -14,6 +14,7 @@ namespace ADSBackend.Models
 
         //not sure how to make a choice of classes but to be integrated in future version
         //Need to add field for optional neccesarry time.
+        //This comment is being added temporarily to distinguish from main branch, This branch will be used to get rid and change of the add assignment on the main branch without having to mess up the main branch.
 
         public string Class { get; set; }
 
