@@ -20,14 +20,16 @@ namespace ADSBackend.Models
         public DateTime dateOfEvent { get; set; }
 
 
+        //question marks make things not required
+
         //this needs to be not required
         [DataType(DataType.Time)]
 
         [Display(Name = "Is there a start time needed for this event? (Optional)")]
-        public DateTime PDateOfEvent { get; set; }
+        public DateTime? PDateOfEvent { get; set; }
 
         //this needs to be not required
         [Display(Name = "Descripiton (Optional)")]
-        public string Pdescription {get; set;}
+        public string? Pdescription {get; set;}
     }
 }
