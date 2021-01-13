@@ -23,6 +23,8 @@ namespace ADSBackend.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
+        public DbSet<ADSBackend.Models.AddPersonalEvent> AddPersonalEvent { get; set; }
+
         //public DbSet<ADSBackend.Models.EventInfo> EventInfo { get; set; }
     }
 }
