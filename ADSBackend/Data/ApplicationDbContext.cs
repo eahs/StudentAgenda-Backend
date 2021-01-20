@@ -26,5 +26,7 @@ namespace ADSBackend.Data
         public DbSet<ADSBackend.Models.AddEvent1> AddEvent { get; set; }
 
         public DbSet<ADSBackend.Models.AddAssignment> AddAssignment { get; set; }
+
+        public DbSet<ADSBackend.Models.AddAssignment2> AddAssignment2 { get; set; }
     }
 }
