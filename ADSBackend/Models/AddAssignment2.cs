@@ -42,14 +42,14 @@ namespace ADSBackend.Models
 
 
         [DataType(DataType.Date)]
-        [Display(Name = "Is there a specific Date on which you'd like to complete this assignment?")]
+        [Display(Name = "Is there a specific Date on which you'd like to complete this assignment? (leave blank if not)")]
 
         public DateTime? dateChoice { get; set; }
         
 
         [DataType(DataType.Time)]
 
-        [Display(Name = "Is there a specific time on which you'd like to complete this assignment?")]
+        [Display(Name = "Is there a specific time on which you'd like to complete this assignment? (leave blank if not)")]
 
         public DateTime? timeChoice { get; set; }
 
