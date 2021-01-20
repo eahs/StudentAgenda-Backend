@@ -4,113 +4,22 @@ using ADSBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ADSBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210113004722_AddPE")]
+    partial class AddPE
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("ADSBackend.Models.AddAssignment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Class")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Difficulty")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Event")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Materials")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("dateOfEvent")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("timeNeeded")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddAssignment");
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.AddAssignment2", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Class2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Difficulty2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Event2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Materials2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("dateChoice")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("dateOfEvent2")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("timeChoice")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("timeNeeded2")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddAssignment2");
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.AddEvent1", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Event")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("dateOfEvent")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddEvent");
-                });
 
             modelBuilder.Entity("ADSBackend.Models.AddPersonalEvent", b =>
                 {

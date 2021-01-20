@@ -51,6 +51,9 @@ namespace ADSBackend
 
             services.AddTransient<Services.Configuration>();
 
+            //Runtime for razor view models so that you dont have to restart the code everytime to test
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+
             services.AddMvc();
 
             services.AddSwaggerGen(c =>
