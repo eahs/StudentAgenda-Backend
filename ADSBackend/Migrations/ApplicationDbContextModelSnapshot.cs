@@ -19,15 +19,21 @@ namespace ADSBackend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ADSBackend.Models.AddAssignment", b =>
+            modelBuilder.Entity("ADSBackend.Models.Assignment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AssignmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Class")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DateChoice")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfEvent")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -41,102 +47,15 @@ namespace ADSBackend.Migrations
                     b.Property<string>("Materials")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("dateOfEvent")
+                    b.Property<DateTime?>("TimeChoice")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("timeNeeded")
+                    b.Property<double>("TimeNeeded")
                         .HasColumnType("float");
 
-                    b.HasKey("Id");
+                    b.HasKey("AssignmentId");
 
-                    b.ToTable("AddAssignment");
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.AddAssignment2", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Class2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Difficulty2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Event2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Materials2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("dateChoice")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("dateOfEvent2")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("timeChoice")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("timeNeeded2")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddAssignment2");
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.AddEvent1", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Event")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("dateOfEvent")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddEvent");
-                });
-
-            modelBuilder.Entity("ADSBackend.Models.AddPersonalEvent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("PDateOfEvent")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PNameOfEvent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PTimeNeeded")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Pdescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("dateOfEvent")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddPersonalEvent");
+                    b.ToTable("Assignment");
                 });
 
             modelBuilder.Entity("ADSBackend.Models.ConfigurationItem", b =>
@@ -289,6 +208,48 @@ namespace ADSBackend.Migrations
                     b.ToTable("Member");
                 });
 
+            modelBuilder.Entity("ADSBackend.Models.MemberAssignment", b =>
+                {
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AssignmentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MemberId", "AssignmentId");
+
+                    b.HasIndex("AssignmentId");
+
+                    b.ToTable("MemberAssignment");
+                });
+
+            modelBuilder.Entity("ADSBackend.Models.PersonalEvent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateOfEvent")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PNameOfEvent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PTimeNeeded")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PTimeOfEvent")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Pdescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PersonalEvent");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -388,6 +349,21 @@ namespace ADSBackend.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("ADSBackend.Models.MemberAssignment", b =>
+                {
+                    b.HasOne("ADSBackend.Models.Assignment", "Assignment")
+                        .WithMany()
+                        .HasForeignKey("AssignmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ADSBackend.Models.Member", "Member")
+                        .WithMany("Assignments")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

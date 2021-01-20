@@ -13,19 +13,23 @@ namespace ADSBackend.Data
 
         public DbSet<ConfigurationItem> ConfigurationItem { get; set; }
         public DbSet<Member> Member { get; set; }
+        public DbSet<ADSBackend.Models.PersonalEvent> PersonalEvent { get; set; }
+        public DbSet<ADSBackend.Models.Assignment> Assignment { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            builder.Entity<MemberAssignment>()
+                         .HasKey(t => new { t.MemberId, t.AssignmentId });
+
+            builder.Entity<MemberAssignment>()
+                .HasOne(ma => ma.Member)
+                .WithMany(ma => ma.Assignments)
+                .HasForeignKey(m => m.MemberId);
+
         }
-        //public DbSet<ADSBackend.Models.EventInfo> EventInfo { get; set; }
-        public DbSet<ADSBackend.Models.AddPersonalEvent> AddPersonalEvent { get; set; }
-        public DbSet<ADSBackend.Models.AddEvent1> AddEvent { get; set; }
-        public DbSet<ADSBackend.Models.AddAssignment> AddAssignment { get; set; }
-        public DbSet<ADSBackend.Models.AddAssignment2> AddAssignment2 { get; set; }
+
     }
 }

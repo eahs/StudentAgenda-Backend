@@ -9,49 +9,49 @@ using System.Threading.Tasks;
 namespace ADSBackend.Models
 {
 
-    public class AddAssignment2
+    public class Assignment
     {
 
-        public int Id { get; set; }
+        public int AssignmentId { get; set; }
 
         [Display(Name = "Class")]
-        public string Class2 { get; set; }
+        public string Class { get; set; }
 
         [Display(Name = "Event")]
-        public string Event2 { get; set; }
+        public string Event { get; set; }
 
         [Display(Name = "Difficulty")]
-        public string Difficulty2 { get; set; }
+        public string Difficulty { get; set; }
 
         [Display(Name = "Materials Needed")]
-        public string Materials2 { get; set; }
+        public string Materials { get; set; }
 
         [Display(Name = "Discription")]
-        public string Description2 { get; set; }
+        public string Description { get; set; }
 
 
         [Display(Name = "Estimated Amount of Time Needed (hours)")]
-        public double timeNeeded2 { get; set; }
+        public double TimeNeeded { get; set; }
 
 
         [DataType(DataType.Date)]
 
         [Display(Name = "Due Date")]
 
-        public DateTime dateOfEvent2 { get; set; }
+        public DateTime DateOfEvent { get; set; }
 
 
         [DataType(DataType.Date)]
         [Display(Name = "Is there a specific Date on which you'd like to complete this assignment? (leave blank if not)")]
 
-        public DateTime? dateChoice { get; set; }
+        public DateTime? DateChoice { get; set; }
         
 
         [DataType(DataType.Time)]
 
         [Display(Name = "Is there a specific time on which you'd like to complete this assignment? (leave blank if not)")]
 
-        public DateTime? timeChoice { get; set; }
+        public DateTime? TimeChoice { get; set; }
 
     }
 }

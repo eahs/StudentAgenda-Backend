@@ -33,5 +33,7 @@ namespace ADSBackend.Models
 
         [JsonIgnore]
         public string PasswordSalt { get; set; }
+
+        public List<MemberAssignment> Assignments { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ADSBackend.Migrations
@@ -13,7 +12,7 @@ namespace ADSBackend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true)
@@ -28,7 +27,7 @@ namespace ADSBackend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
@@ -64,11 +63,45 @@ namespace ADSBackend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Member",
+                columns: table => new
+                {
+                    MemberId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(maxLength: 32, nullable: false),
+                    LastName = table.Column<string>(maxLength: 32, nullable: false),
+                    Email = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    PasswordSalt = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Member", x => x.MemberId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PersonalEvent",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PNameOfEvent = table.Column<string>(nullable: true),
+                    DateOfEvent = table.Column<DateTime>(nullable: false),
+                    PTimeOfEvent = table.Column<DateTime>(nullable: false),
+                    PTimeNeeded = table.Column<int>(nullable: false),
+                    Pdescription = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersonalEvent", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<int>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -89,7 +122,7 @@ namespace ADSBackend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -169,6 +202,34 @@ namespace ADSBackend.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Assignment",
+                columns: table => new
+                {
+                    AssignmentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Class = table.Column<string>(nullable: true),
+                    Event = table.Column<string>(nullable: true),
+                    Difficulty = table.Column<string>(nullable: true),
+                    Materials = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    TimeNeeded = table.Column<double>(nullable: false),
+                    DateOfEvent = table.Column<DateTime>(nullable: false),
+                    DateChoice = table.Column<DateTime>(nullable: true),
+                    TimeChoice = table.Column<DateTime>(nullable: true),
+                    MemberId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assignment", x => x.AssignmentId);
+                    table.ForeignKey(
+                        name: "FK_Assignment_Member_MemberId",
+                        column: x => x.MemberId,
+                        principalTable: "Member",
+                        principalColumn: "MemberId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -207,6 +268,11 @@ namespace ADSBackend.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assignment_MemberId",
+                table: "Assignment",
+                column: "MemberId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -227,13 +293,22 @@ namespace ADSBackend.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Assignment");
+
+            migrationBuilder.DropTable(
                 name: "ConfigurationItem");
+
+            migrationBuilder.DropTable(
+                name: "PersonalEvent");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Member");
         }
     }
 }

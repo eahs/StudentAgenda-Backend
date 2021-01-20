@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ADSBackend.Models
 {
-    public class AddPersonalEvent
+    public class PersonalEvent
     {
+        [Key]
         public int Id { get; set; }
 
         [Display(Name = "Event:")]
@@ -17,7 +18,7 @@ namespace ADSBackend.Models
         [DataType(DataType.Date)]
 
         [Display(Name = "When is this event?")]
-        public DateTime dateOfEvent { get; set; }
+        public DateTime DateOfEvent { get; set; }
 
 
         //question marks make things not required
@@ -26,7 +27,7 @@ namespace ADSBackend.Models
         [DataType(DataType.Time)]
 
         [Display(Name = "Is there a start time needed for this event? (Optional)")]
-        public DateTime? PDateOfEvent { get; set; }
+        public DateTime PTimeOfEvent { get; set; }
 
         [Display(Name = "Amount Of Time Needed:")]
         public int PTimeNeeded { get; set; }
