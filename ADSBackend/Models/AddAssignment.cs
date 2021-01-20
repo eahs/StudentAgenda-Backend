@@ -12,6 +12,10 @@ namespace ADSBackend.Models
 
         public int Id { get; set; }
 
+
+        //this file will be delted soon, replaced by add assignment 2
+
+
         //not sure how to make a choice of classes but to be integrated in future version
         //Need to add field for optional neccesarry time.
         //This comment is being added temporarily to distinguish from main branch, This branch will be used to get rid and change of the add assignment on the main branch without having to mess up the main branch.
