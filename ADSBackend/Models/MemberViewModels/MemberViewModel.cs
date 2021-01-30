@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace ADSBackend.Models
+namespace ADSBackend.Models.MemberViewModels
 {
-    public class Member
+    public class MemberViewModel
     {
         [Key]
         public int MemberId { get; set; }
@@ -26,9 +26,9 @@ namespace ADSBackend.Models
         [Required, DataType(DataType.EmailAddress, ErrorMessage = "Enter a valid email address")]
         public string Email { get; set; }
 
-        [Required]
+        
         [JsonIgnore]
-        [MinLength(8, ErrorMessage = "Password must be at least 8 characters long")]
+        
         public string Password { get; set; }
 
         [JsonIgnore]
@@ -36,6 +36,20 @@ namespace ADSBackend.Models
 
         public List<MemberAssignment> Assignments { get; set; }
 
-        //Assignments.Add()
+        public MemberViewModel(Member member)
+        {
+            this.MemberId = member.MemberId;
+            this.FirstName = member.FirstName;
+            this.LastName = member.LastName;
+            this.Email = member.Email;
+            this.Password = member.Password;
+            this.PasswordSalt = member.PasswordSalt;
+            
+            
+            //this.Assignments = member.Assignments?.Select(ma => ma.MemberId = (MemberId of current user)).ToList();
+            
+            //m.memberid
+        }
+
     }
 }
