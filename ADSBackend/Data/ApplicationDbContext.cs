@@ -31,5 +31,8 @@ namespace ADSBackend.Data
 
         }
 
+
+        public DbSet<ADSBackend.Models.MemberAssignment> MemberAssignment { get; set; }
+
     }
 }

@@ -102,6 +102,27 @@ namespace ADSBackend.Controllers
             return member;
         }
 
+        //date sorting things
+        
+        /*
+        public async Task<ActionResult<Member>> SortList(int id)
+        {
+
+            var OrganizeList = new MemberAssignment
+            {
+                MemberId = 
+
+                AssignmentId = 
+
+            }
+
+
+            _context.MemberAssignment.Add(OrganizeList);
+            await _context.SaveChangesAsync();
+
+        }
+        */
+
         private bool MemberExists(int id)
         {
             return _context.Member.Any(e => e.MemberId == id);
