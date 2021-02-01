@@ -46,8 +46,10 @@ namespace ADSBackend.Models.MemberViewModels
             this.PasswordSalt = member.PasswordSalt;
             
             
-            //this.Assignments = member.Assignments?.Select(ma => ma.MemberId = (MemberId of current user)).ToList();
+            //this.Assignments = member.Assignments?.Select(ma => ma.).ToList();
             
+            //try using the assignments class
+
             //m.memberid
         }
 

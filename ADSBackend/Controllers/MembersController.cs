@@ -105,7 +105,7 @@ namespace ADSBackend.Controllers
         //date sorting things
         
         /*
-        public async Task<ActionResult<Member>> SortList(int id)
+        public async Task<ActionResult<Member>> SortList(Member member)
         {
 
             var OrganizeList = new MemberAssignment
