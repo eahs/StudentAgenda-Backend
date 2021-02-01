@@ -33,7 +33,7 @@ namespace ADSBackend.Models
         public int PTimeNeeded { get; set; }
 
         //this needs to be not required
-        [Display(Name = "Descripiton (Optional)")]
+        [Display(Name = "Description (Optional)")]
         public string Pdescription {get; set;}
     }
 }
