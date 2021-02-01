@@ -34,6 +34,8 @@ namespace ADSBackend.Models
         [JsonIgnore]
         public string PasswordSalt { get; set; }
 
-        public List<MemberAssignment> Assignments { get; set; }
+
+        //eeds to be changed to a personal assignment version, class assignments saved to classes, personal to member
+        //public List<MemberAssignment> PersonalAssignments { get; set; }
     }
 }
