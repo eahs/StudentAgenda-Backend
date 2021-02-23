@@ -51,6 +51,27 @@ namespace ADSBackend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Assignment",
+                columns: table => new
+                {
+                    AssignmentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Class = table.Column<string>(nullable: true),
+                    Event = table.Column<string>(nullable: true),
+                    Difficulty = table.Column<string>(nullable: true),
+                    Materials = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    TimeNeeded = table.Column<double>(nullable: false),
+                    DateOfEvent = table.Column<DateTime>(nullable: false),
+                    DateChoice = table.Column<DateTime>(nullable: true),
+                    TimeChoice = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assignment", x => x.AssignmentId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ConfigurationItem",
                 columns: table => new
                 {
@@ -203,31 +224,27 @@ namespace ADSBackend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Assignment",
+                name: "MemberAssignment",
                 columns: table => new
                 {
+                    MemberId = table.Column<int>(nullable: false),
                     AssignmentId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Class = table.Column<string>(nullable: true),
-                    Event = table.Column<string>(nullable: true),
-                    Difficulty = table.Column<string>(nullable: true),
-                    Materials = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    TimeNeeded = table.Column<double>(nullable: false),
-                    DateOfEvent = table.Column<DateTime>(nullable: false),
-                    DateChoice = table.Column<DateTime>(nullable: true),
-                    TimeChoice = table.Column<DateTime>(nullable: true),
-                    MemberId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Assignment", x => x.AssignmentId);
+                    table.PrimaryKey("PK_MemberAssignment", x => new { x.MemberId, x.AssignmentId });
                     table.ForeignKey(
-                        name: "FK_Assignment_Member_MemberId",
+                        name: "FK_MemberAssignment_Assignment_AssignmentId",
+                        column: x => x.AssignmentId,
+                        principalTable: "Assignment",
+                        principalColumn: "AssignmentId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MemberAssignment_Member_MemberId",
                         column: x => x.MemberId,
                         principalTable: "Member",
                         principalColumn: "MemberId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -270,9 +287,9 @@ namespace ADSBackend.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Assignment_MemberId",
-                table: "Assignment",
-                column: "MemberId");
+                name: "IX_MemberAssignment_AssignmentId",
+                table: "MemberAssignment",
+                column: "AssignmentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -293,10 +310,10 @@ namespace ADSBackend.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Assignment");
+                name: "ConfigurationItem");
 
             migrationBuilder.DropTable(
-                name: "ConfigurationItem");
+                name: "MemberAssignment");
 
             migrationBuilder.DropTable(
                 name: "PersonalEvent");
@@ -306,6 +323,9 @@ namespace ADSBackend.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Assignment");
 
             migrationBuilder.DropTable(
                 name: "Member");

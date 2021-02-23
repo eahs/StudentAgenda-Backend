@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ADSBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210120162609_Initial")]
+    [Migration("20210223001113_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.10")
+                .HasAnnotation("ProductVersion", "3.1.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -49,9 +49,6 @@ namespace ADSBackend.Migrations
                     b.Property<string>("Materials")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MemberId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("TimeChoice")
                         .HasColumnType("datetime2");
 
@@ -59,8 +56,6 @@ namespace ADSBackend.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("AssignmentId");
-
-                    b.HasIndex("MemberId");
 
                     b.ToTable("Assignment");
                 });
@@ -215,6 +210,21 @@ namespace ADSBackend.Migrations
                     b.ToTable("Member");
                 });
 
+            modelBuilder.Entity("ADSBackend.Models.MemberAssignment", b =>
+                {
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AssignmentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MemberId", "AssignmentId");
+
+                    b.HasIndex("AssignmentId");
+
+                    b.ToTable("MemberAssignment");
+                });
+
             modelBuilder.Entity("ADSBackend.Models.PersonalEvent", b =>
                 {
                     b.Property<int>("Id")
@@ -343,11 +353,19 @@ namespace ADSBackend.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ADSBackend.Models.Assignment", b =>
+            modelBuilder.Entity("ADSBackend.Models.MemberAssignment", b =>
                 {
-                    b.HasOne("ADSBackend.Models.Member", null)
+                    b.HasOne("ADSBackend.Models.Assignment", "Assignment")
+                        .WithMany()
+                        .HasForeignKey("AssignmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ADSBackend.Models.Member", "Member")
                         .WithMany("Assignments")
-                        .HasForeignKey("MemberId");
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

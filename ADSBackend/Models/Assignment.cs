@@ -11,7 +11,7 @@ namespace ADSBackend.Models
 
     public class Assignment
     {
-
+        [Key]
         public int AssignmentId { get; set; }
 
         [Display(Name = "Class")]
