@@ -19,14 +19,16 @@
 @if (User.IsInRole("Admin"))
 {
     <div class="row">
-        <div class="col-lg-4">
+        <!--col-lg-3 determines the layout of the page, as in actual positing, try changing the number to see other options. It basically works like a grid.-->
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>Environment</h5>
+                    <h3>Environment</h3>
                 </div>
                 <div class="ibox-content">
                     <p>Some stuff about the planet here.</p>
                     <a href="#" class="btn btn-primary">
+                        <!--this is a comment, stuff in quotes is existing things that you make appear.-->
                         <span class="fa fa-recycle"></span> Reduce, Reuse, and Recycle
                     </a>
                 </div>
@@ -34,9 +36,12 @@
         </div>
         <div class="col-lg-4">
             <div class="ibox">
+                <!--You see this code about ibox, iboxs are the boxes you see that are holding text!-->
                 <div class="ibox-title">
+                    <!--The text in between the carrots repersents attributes about whats inside, and my account is just string.-->
                     <h5>My Account</h5>
                 </div>
+                <!--As you can see there are specific things you type to determine where your text and such will appear, this is shown bellow with the command of "ibox content"-->
                 <div class="ibox-content">
                     <p>It's how you log in!</p>
                     <a asp-controller="Manage" asp-action="Index" class="btn btn-default">
@@ -58,6 +63,26 @@
                 </div>
             </div>
         </div>
+        <!--this is an example!-->
+        <div class="col-lg-10">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Options</h5>
+                </div>
+                <div class="ibox-content">
+                    <p>Here you can edit your options for the backened!</p>
+                </div>
+            </div>
+        </div>
     </div>
 
+
+
+    //for later use
+    /*
+    @if (User.IsInRole("User"))
+    {
+    
+    }
+    */
 }
