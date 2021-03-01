@@ -76,13 +76,51 @@
         </div>
     </div>
 
+}
 
-
-    //for later use
-    /*
-    @if (User.IsInRole("User"))
-    {
-    
-    }
-    */
+@if (User.IsInRole("User"))
+{
+    <!--Average user - Username: admin1 Password: Password123! Name: Billy Bob-->
+    <!--Currently this is the same as admin, except it can't manage users. Log into this one and make changes to affect user experience.-->
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Environments</h5>
+                </div>
+                <div class="ibox-content">
+                    <p>Some stuff about the planet here.</p>
+                    <a href="#" class="btn btn-primary">
+                        <span class="fa fa-recycle"></span> Reduce, Reuse, and Recycle
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>My Account</h5>
+                </div>
+                <div class="ibox-content">
+                    <p>It's how you log in!</p>
+                    <a asp-controller="Manage" asp-action="Index" class="btn btn-default">
+                        <span class="fa fa-user-circle-o"></span> Manage Account
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Configuration</h5>
+                </div>
+                <div class="ibox-content">
+                    <p>Configuration stuff here.</p>
+                    <a asp-controller="Configuration" asp-action="Index" class="btn btn-default">
+                        <span class="fa fa-cog"></span> Update Configuration
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 }
