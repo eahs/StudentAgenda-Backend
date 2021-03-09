@@ -19,29 +19,99 @@
 @if (User.IsInRole("Admin"))
 {
     <div class="row">
-        <!--col-lg-3 determines the layout of the page, as in actual positing, try changing the number to see other options. It basically works like a grid.-->
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h3>Environment</h3>
+                    <h5>Assignments</h5>
                 </div>
+
                 <div class="ibox-content">
-                    <p>Some stuff about the planet here.</p>
-                    <a href="#" class="btn btn-primary">
-                        <!--this is a comment, stuff in quotes is existing things that you make appear.-->
-                        <span class="fa fa-recycle"></span> Reduce, Reuse, and Recycle
+                    <p>View and add your assignments here.</p>
+                    <div class="ibox-content inspinia-timeline">
+
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-file"></i>
+                                    Due Friday at 11:59 PM
+                                    <br>
+                                </div>
+                                <div class="col content no-top-border">
+                                    <p class="m-b-xs"><strong>Math</strong></p>
+
+                                    <p>
+                                        Geometry worksheet, both sides.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-file"></i>
+                                    Due tommorow at 11:59 PM
+                                    <br>
+                                </div>
+                                <div class="col content">
+                                    <p class="m-b-xs"><strong>Chemistry</strong></p>
+                                    <p>Powerpoint to present to the class.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-phone"></i>
+                                    Meeting at 5:00 PM
+                                    <br>
+                                </div>
+                                <div class="col content">
+                                    <p class="m-b-xs"><strong>Zoom Meeting with Rubick</strong></p>
+                                    <p>
+                                        Discuss our plans for the Student Agenda app and our changes to the code.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-4 date">
+                                    <i class="fa fa-file"></i>
+                                    Due next Monday at 11:59 PM
+                                    <br>
+                                </div>
+                                <div class="col content">
+                                    <p class="m-b-xs"><strong>History</strong></p>
+                                    <p>
+                                        Watch movie on Netflix and then answer questions about it via the worksheet.
+                                    </p>
+                                            <div class="col-4 date">
+                                            
+                                            <i class="fa fa-file"></i>
+                                            Due next Monday at 11:59 PM
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+
+                    </div>
+                    
+                        <a asp-controller="Assignments" class="btn btn-primary">
+                        <span class="fa fa-plus"></span> Add Assignment
+
+
                     </a>
                 </div>
             </div>
         </div>
         <div class="col-lg-4">
             <div class="ibox">
-                <!--You see this code about ibox, iboxs are the boxes you see that are holding text!-->
                 <div class="ibox-title">
-                    <!--The text in between the carrots repersents attributes about whats inside, and my account is just string.-->
                     <h5>My Account</h5>
                 </div>
-                <!--As you can see there are specific things you type to determine where your text and such will appear, this is shown bellow with the command of "ibox content"-->
                 <div class="ibox-content">
                     <p>It's how you log in!</p>
                     <a asp-controller="Manage" asp-action="Index" class="btn btn-default">
@@ -63,64 +133,6 @@
                 </div>
             </div>
         </div>
-        <!--this is an example!-->
-        <div class="col-lg-10">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Options</h5>
-                </div>
-                <div class="ibox-content">
-                    <p>Here you can edit your options for the backened!</p>
-                </div>
-            </div>
-        </div>
     </div>
 
-}
-
-@if (User.IsInRole("User"))
-{
-    <!--Average user - Username: admin1 Password: Password123! Name: Billy Bob-->
-    <!--Currently this is the same as admin, except it can't manage users. Log into this one and make changes to affect user experience.-->
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Environments</h5>
-                </div>
-                <div class="ibox-content">
-                    <p>Some stuff about the planet here.</p>
-                    <a href="#" class="btn btn-primary">
-                        <span class="fa fa-recycle"></span> Reduce, Reuse, and Recycle
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>My Account</h5>
-                </div>
-                <div class="ibox-content">
-                    <p>It's how you log in!</p>
-                    <a asp-controller="Manage" asp-action="Index" class="btn btn-default">
-                        <span class="fa fa-user-circle-o"></span> Manage Account
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h5>Configuration</h5>
-                </div>
-                <div class="ibox-content">
-                    <p>Configuration stuff here.</p>
-                    <a asp-controller="Configuration" asp-action="Index" class="btn btn-default">
-                        <span class="fa fa-cog"></span> Update Configuration
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 }

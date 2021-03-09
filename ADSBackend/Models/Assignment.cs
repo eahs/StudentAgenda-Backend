@@ -26,7 +26,7 @@ namespace ADSBackend.Models
         [Display(Name = "Materials Needed")]
         public string Materials { get; set; }
 
-        [Display(Name = "Discription")]
+        [Display(Name = "Description")]
         public string Description { get; set; }
 
 
@@ -42,7 +42,7 @@ namespace ADSBackend.Models
 
 
         [DataType(DataType.Date)]
-        [Display(Name = "Is there a specific Date on which you'd like to complete this assignment? (leave blank if not)")]
+        [Display(Name = "Is there a specific date on which you'd like to complete this assignment? (leave blank if not)")]
 
         public DateTime? DateChoice { get; set; }
         
