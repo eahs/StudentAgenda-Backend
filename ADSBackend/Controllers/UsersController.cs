@@ -180,6 +180,7 @@ namespace ADSBackend.Controllers
             return View(viewModel);
         }
 
+
         public async Task<IActionResult> Delete(int id)
         {
             var user = await _context.Users.FindAsync(id);
