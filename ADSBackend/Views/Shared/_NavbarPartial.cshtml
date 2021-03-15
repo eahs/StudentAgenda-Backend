@@ -42,18 +42,24 @@
                 </li>
                 @if (User.IsInRole("Admin"))
                 {
+                    <li is-active-route asp-controller="Assignments">
+                        <a asp-controller="Assignments" asp-action="Index"><i class="fa fa-file"></i><span class="nav-label">Assignments</span></a>
+                    </li>
+                    
                     <li is-active-route asp-controller="Users">
                         <a asp-controller="Users" asp-action="Index"><i class="fa fa-users"></i><span class="nav-label">Manage Users</span></a>
-                    </li>
+                    
                     <li is-active-route asp-controller="Configuration">
                         <a asp-controller="Configuration" asp-action="Index"><i class="fa fa-cog"></i><span class="nav-label">Configuration</span></a>
                     </li>
-                }
-            }
-            else
-            {
-                // not signed in
-            }
-        </ul>
+                    </li>
+                    
+                    }
+                    }
+                    else
+                    {
+                    // not signed in
+                    }
+                </ul>
     </div>
 </nav>
