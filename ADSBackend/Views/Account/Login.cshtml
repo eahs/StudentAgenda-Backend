@@ -13,13 +13,13 @@
     <div>
         <div>
             <h1 class="logo-name">
-                <i class="fa fa-paw"></i>
+                <i class="fa fa-calendar"></i>
             </h1>
         </div>
         <br />
-        <h3>Welcome to ADS Backend!</h3>
+        <h3>Welcome to Student Agenda!</h3>
         <p>
-            Perfectly designed and precisely prepared backend to your ADS app.
+            The perfect place to keep track of due dates for recent assignments and much more! 
         </p>
         <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -46,7 +46,7 @@
                 <a asp-action="ForgotPassword">Forgot your password?</a>
             </div>
         </form>
-        <p class="m-t"><small>Easton Area School District &copy; @ViewData["CopyrightYear"]</small></p>
+        <p class="m-t"><small>Student Agenda &copy; @ViewData["CopyrightYear"]</small></p>
     </div>
 </div>
 
