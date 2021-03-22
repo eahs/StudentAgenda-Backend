@@ -37,19 +37,41 @@
                         <i class="fa fa-bell"></i>
                     </div>
                 </li>
-                <li is-active-route asp-controller="Admin">
-                    <a asp-controller="Admin" asp-action="Index"><i class="fa fa-dashboard"></i><span class="nav-label">Dashboard</span></a>
-                </li>
+
                 @if (User.IsInRole("Admin"))
                 {
+                    <li is-active-route asp-controller="Admin">
+                        <a asp-controller="Admin" asp-action="Index"><i class="fa fa-dashboard"></i><span class="nav-label">Dashboard</span></a>
+                    </li>
+
+                    <li is-active-route asp-controller="Assignments">
+                        <a asp-controller="Assignments" asp-action="Index"><i class="fa fa-file"></i><span class="nav-label">Assignments</span></a>
+                    </li>
+
                     <li is-active-route asp-controller="Users">
                         <a asp-controller="Users" asp-action="Index"><i class="fa fa-users"></i><span class="nav-label">Manage Users</span></a>
-                    </li>
+
                     <li is-active-route asp-controller="Configuration">
                         <a asp-controller="Configuration" asp-action="Index"><i class="fa fa-cog"></i><span class="nav-label">Configuration</span></a>
                     </li>
+                    </li>
                 }
-            }
+                    @if (User.IsInRole("User"))
+                    {
+                        <li is-active-route asp-controller="Admin">
+                            <a asp-controller="Admin" asp-action="Index"><i class="fa fa-dashboard"></i><span class="nav-label">Dashboard</span></a>
+                        </li>
+                        
+                        <li is-active-route asp-controller="Assignments">
+                            <a asp-controller="Assignments" asp-action="Index"><i class="fa fa-file"></i><span class="nav-label">Assignments</span></a>
+                        </li>
+
+                        <li is-active-route asp-controller="Configuration">
+                            <a asp-controller="Configuration" asp-action="Index"><i class="fa fa-cog"></i><span class="nav-label">Configuration</span></a>
+                        </li>
+                    }
+                }
+            
             else
             {
                 // not signed in
