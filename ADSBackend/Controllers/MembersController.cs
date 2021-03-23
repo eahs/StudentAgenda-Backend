@@ -102,6 +102,28 @@ namespace ADSBackend.Controllers
             return member;
         }
 
+        //putting the ids on the list
+        [HttpPost]
+        public async Task<ActionResult<Member>> UpdateAssignment(int id)
+        {
+            var httpUser = (Member)HttpContext.Items["Users"];
+            var member = await _context.Member.FirstOrDefaultAsync(a => a.MemberId == httpUser.MemberId);
+
+            var memId = _context.Member.Select(m => m.MemberId);
+
+            member.Assignments.Add((MemberAssignment)memId);
+
+            var httpAssignment = (Assignment)HttpContext.Items["Assignments"];
+            var assignment1 = await _context.Assignment.FirstOrDefaultAsync(a => a.AssignmentId == httpAssignment.AssignmentId);
+
+            var assignId = _context.Assignment.Select(b => b.AssignmentId);
+
+            member.Assignments.Add((MemberAssignment)(assignId));
+
+            await _context.SaveChangesAsync();
+            return member;
+        }
+
         private bool MemberExists(int id)
         {
             return _context.Member.Any(e => e.MemberId == id);
