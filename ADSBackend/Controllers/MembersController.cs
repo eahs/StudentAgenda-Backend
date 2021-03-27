@@ -102,26 +102,30 @@ namespace ADSBackend.Controllers
             return member;
         }
 
-        //putting the ids on the list
         [HttpPost]
-        public async Task<ActionResult<Member>> UpdateAssignment(int id)
+        public async Task<IActionResult> UpdateAssignment(int id, [Bind("AssignmentId")] Assignment assignment)
         {
             var httpUser = (Member)HttpContext.Items["Users"];
             var member = await _context.Member.FirstOrDefaultAsync(a => a.MemberId == httpUser.MemberId);
 
             var memId = _context.Member.Select(m => m.MemberId);
 
+
             member.Assignments.Add((MemberAssignment)memId);
 
+
             var httpAssignment = (Assignment)HttpContext.Items["Assignments"];
-            var assignment1 = await _context.Assignment.FirstOrDefaultAsync(a => a.AssignmentId == httpAssignment.AssignmentId);
+
+            assignment = await _context.Assignment.FirstOrDefaultAsync(a => a.AssignmentId == id);
 
             var assignId = _context.Assignment.Select(b => b.AssignmentId);
 
             member.Assignments.Add((MemberAssignment)(assignId));
 
             await _context.SaveChangesAsync();
-            return member;
+
+            //not sure what to return yet.
+            return (IActionResult)assignId;
         }
 
         private bool MemberExists(int id)
