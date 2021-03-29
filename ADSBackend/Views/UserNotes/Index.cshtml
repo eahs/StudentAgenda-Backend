@@ -3,11 +3,16 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h2>Index</h2>
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>Notes</h2>
+    </div>
+</div>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-default">
+        <span class="fa fa-plus"></span> Add Note
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -31,9 +36,9 @@
                 @Html.DisplayFor(modelItem => item.noteContent)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UserNotesId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserNotesId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserNotesId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.UserNotesId" class="btn btn-default">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UserNotesId" class="btn btn-default">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UserNotesId" class="btn btn-default">Delete</a>
             </td>
         </tr>
 }

@@ -3,33 +3,39 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="ibox">
+    <div class="ibox-title">
+        <h2>About Us!</h2>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.aBout)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.aBout)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.AboutUsId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AboutUsId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AboutUsId">Delete</a>
-            </td>
-        </tr>
-}
     </tbody>
+
 </table>
+<div class="ibox">
+    <div class="ibox-title">
+
+        <p> DTR (Dev Team Ruvic) is a proud indie development team headed by Esteban Martinez. We're a small group, with view resources in finance and equipment, but all the determination in the world. </p>
+        
+        <p> Together, with the support from our community, we pulled through to create the Student Agenda app. It is a testament to the dedication behind each and every member of DTR. Below this paragraph is a list of Dev Team Ruvic’s members, and their roles in developing the Student Agenda app. </p>
+
+          <p> Esteban Martinez - Scrum master, Back End supervisor, Back End engineer </p>
+
+          <p>  Timothy Coldberg - Front End Supervisor, Front End Engineer </p>
+
+          <p>  Chester Soto - Front End Engineer </p>
+
+          <p>  Jake Newman - Back End Engineer </p>
+
+    </div>
+</div>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-success">Back to Home</a>
