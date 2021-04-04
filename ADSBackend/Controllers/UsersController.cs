@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using ADSBackend.Models;
+using System.Collections.Generic;
 
 namespace ADSBackend.Controllers
 {
@@ -205,6 +207,15 @@ namespace ADSBackend.Controllers
             var user = await _userManager.FindByIdAsync(id.ToString());
             await _userManager.DeleteAsync(user);
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> UpdateAssignment(int id, [Bind("AssignmentId")] Assignment assignment)
+        {
+            public List<Assignment> UserAssignment = new List<Assignment>();
+            
+
+        
+            return View(UserAssignment);
         }
 
         private bool UserExists(int id)
