@@ -209,18 +209,70 @@ namespace ADSBackend.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> UpdateAssignment(int id, [Bind("AssignmentId")] Assignment assignment)
-        {
-            public List<Assignment> UserAssignment = new List<Assignment>();
-            
 
-        
-            return View(UserAssignment);
+/*
+date to string:
+
+DateTime date = DateTime.Now; // will give the date for today
+string dateWithFormat = date.ToLongDateString();
+*/
+        [HttpPost]
+        public async Task<IActionResult> UpdateAssignment(int id, [Bind("Event, DateOfEvent, TimeChoice, DateChoice")] Assignment assignment)
+        {
+            //this needs a for each loop to loop through each entry on the assignments model so that it goes through each and adds it to UserAssignments.cs and for it to check for new entries, then get displayed on the user view model
+
+            List<UserAssignments> Ua = new List<UserAssignments>();
+            var AsList = new UserAssignments();
+
+
+            var Name = assignment.Event;
+
+            AsList.AssignmentName = Name;
+
+
+            var dd = assignment.DateOfEvent;
+
+            string ddS;
+
+            if (dd != null)
+            { 
+                ddS = dd.ToLongDateString();
+                AsList.AssignmentDD = ddS;
+            }
+
+            //time choice - added s means string
+
+            var tc = assignment.TimeChoice;
+            string tcS;
+
+            if (tc != null)
+            {
+                tcS = tc + "";
+
+                AsList.timeChoice = tcS;
+
+            }
+            //optional date
+            var op = assignment.DateChoice;
+
+            string opS;
+
+            
+            Ua.Add(AsList);
+
+            return View(Ua);
         }
 
-        private bool UserExists(int id)
+
+
+    private bool UserExists(int id)
         {
             return _context.Users.Any(x => x.Id == id);
         }
+
+
+
+
+
     }
 }
