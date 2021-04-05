@@ -249,6 +249,8 @@ string dateWithFormat = date.ToLongDateString();
             {
                 tcS = tc + "";
 
+                tcS = ((System.DateTime)tc).ToLongTimeString();
+
                 AsList.timeChoice = tcS;
 
             }
@@ -256,6 +258,13 @@ string dateWithFormat = date.ToLongDateString();
             var op = assignment.DateChoice;
 
             string opS;
+
+            if (op != null)
+            {
+                opS = ((System.DateTime)op).ToLongDateString();
+
+                AsList.optionalDate = opS;
+            }
 
             
             Ua.Add(AsList);
