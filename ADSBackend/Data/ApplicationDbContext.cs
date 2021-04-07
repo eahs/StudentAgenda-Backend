@@ -2,6 +2,7 @@
 using ADSBackend.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ADSBackend.Models.AdminViewModels;
 
 namespace ADSBackend.Data
 {
@@ -30,6 +31,9 @@ namespace ADSBackend.Data
                 .HasForeignKey(m => m.MemberId);
 
         }
+
+
+        public DbSet<ADSBackend.Models.AdminViewModels.UserViewModel> UserViewModel { get; set; }
 
     }
 }

@@ -19,7 +19,7 @@ namespace ADSBackend.Models.AdminViewModels
 
         [Required]
         public string Role { get; set; }
-        
+
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
@@ -27,5 +27,19 @@ namespace ADSBackend.Models.AdminViewModels
         [Display(Name = "Confirm Password")]
         [Compare("Password", ErrorMessage = "Passwords don't match")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Name of Assignment: ")]
+        public string AssignmentName { get; set; }
+
+        [Display(Name = "Optional Specified Time: ")]
+        public string TimeChoice { get; set; }
+
+        [Display(Name = "Optional Choice Of Date To Be Completed On: ")]
+        public string DateChoice { get; set; }
+
+        [Display(Name = "Due Date: ")]
+        public string DueDate { get; set; }
+
+       
     }
 }

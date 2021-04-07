@@ -265,10 +265,10 @@ namespace ADSBackend.Controllers
 
             var viewModel = new UserViewModel
             {
-                Email = Name,
-                FirstName = ddS,
-                LastName = tcS,
-                Role = opS,
+                AssignmentName = Name,
+                TimeChoice = ddS,
+                DateChoice = tcS,
+                DueDate = opS,
             };
 
             await _context.SaveChangesAsync();
