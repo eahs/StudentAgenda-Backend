@@ -2,6 +2,7 @@
 using ADSBackend.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ADSBackend.Models.AdminViewModels;
 
 namespace ADSBackend.Data
 {
@@ -36,6 +37,9 @@ namespace ADSBackend.Data
 
 
         public DbSet<ADSBackend.Models.UserNotes> UserNotes { get; set; }
+
+
+        public DbSet<ADSBackend.Models.AdminViewModels.UserViewModel> UserViewModel { get; set; }
 
     }
 }

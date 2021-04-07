@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using ADSBackend.Models;
+using System.Collections.Generic;
 
 namespace ADSBackend.Controllers
 {
@@ -207,9 +209,83 @@ namespace ADSBackend.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        /*
+         date to string:
+
+         DateTime date = DateTime.Now; // will give the date for today
+         string dateWithFormat = date.ToLongDateString();
+         */
+        public async Task<IActionResult> UpdateAssignment(int id, [Bind("Event, DateOfEvent, TimeChoice, DateChoice")] Assignment assignment)
+        {
+            //this needs a for each loop to loop through each entry on the assignments model so that it goes through each and adds it to UserAssignments.cs and for it to check for new entries, then get displayed on the user view model
+
+            /*
+             for previous version
+
+            List<UserAssignments> Ua = new List<UserAssignments>();
+            var AsList = new UserAssignments();
+            */
+
+            var Name = assignment.Event;
+
+            var dd = assignment.DateOfEvent;
+
+            string ddS = dd.ToLongDateString();
+
+            //time choice - added s means string
+
+            var tc = assignment.TimeChoice;
+            string tcS = "";
+
+            if (tc != null)
+            {
+
+                tcS = ((System.DateTime)tc).ToLongTimeString();
+
+            }
+            else
+            {
+                tcS = " ";
+            }
+            //optional date
+            var op = assignment.DateChoice;
+
+            string opS = "";
+
+            if (op != null)
+            {
+                opS = ((System.DateTime)op).ToLongDateString();
+            }
+            else
+            {
+                opS = " ";
+            }
+
+
+            var viewModel = new UserViewModel
+            {
+                AssignmentName = Name,
+                TimeChoice = ddS,
+                DateChoice = tcS,
+                DueDate = opS,
+            };
+
+            await _context.SaveChangesAsync();
+
+            return View(viewModel);
+        }
+
+
+
         private bool UserExists(int id)
         {
             return _context.Users.Any(x => x.Id == id);
         }
+
+
+
+
+
     }
 }
