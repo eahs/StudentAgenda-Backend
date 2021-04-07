@@ -216,7 +216,7 @@ namespace ADSBackend.Controllers
          DateTime date = DateTime.Now; // will give the date for today
          string dateWithFormat = date.ToLongDateString();
          */
-        public async Task<IActionResult> UpdateAssignment(int id, [Bind("Event, DateOfEvent, TimeChoice, DateChoice")] Assignment assignment)
+        public async Task<IActionResult> UpdateAssignment(int id)
         {
             //this needs a for each loop to loop through each entry on the assignments model so that it goes through each and adds it to UserAssignments.cs and for it to check for new entries, then get displayed on the user view model
 
@@ -226,6 +226,10 @@ namespace ADSBackend.Controllers
             List<UserAssignments> Ua = new List<UserAssignments>();
             var AsList = new UserAssignments();
             */
+            Assignment assignment = await _context.Assignment.FirstOrDefaultAsync(a => a.AssignmentId == id);
+
+            if (assignment is null)
+                return NotFound();
 
             var Name = assignment.Event;
 
@@ -271,7 +275,7 @@ namespace ADSBackend.Controllers
                 DueDate = opS,
             };
 
-            await _context.SaveChangesAsync();
+
 
             return View(viewModel);
         }

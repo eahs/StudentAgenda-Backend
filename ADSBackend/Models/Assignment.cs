@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ADSBackend.Models.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace ADSBackend.Models
     {
         [Key]
         public int AssignmentId { get; set; }
+
+        public int UserId { get; set; }
+        public ApplicationUser User { get; set; }
 
         [Display(Name = "Class")]
         public string Class { get; set; }

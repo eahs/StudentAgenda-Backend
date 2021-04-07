@@ -35,11 +35,6 @@ namespace ADSBackend.Data
 
         public DbSet<ADSBackend.Models.AboutUs> AboutUs { get; set; }
 
-
         public DbSet<ADSBackend.Models.UserNotes> UserNotes { get; set; }
-
-
-        public DbSet<ADSBackend.Models.AdminViewModels.UserViewModel> UserViewModel { get; set; }
-
     }
 }

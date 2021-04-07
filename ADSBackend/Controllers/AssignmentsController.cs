@@ -7,22 +7,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ADSBackend.Data;
 using ADSBackend.Models;
+using Microsoft.AspNetCore.Identity;
+using ADSBackend.Models.Identity;
 
 namespace ADSBackend.Controllers
 {
     public class AssignmentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AssignmentsController(ApplicationDbContext context)
+        public AssignmentsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Assignments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Assignment.ToListAsync());
+            ApplicationUser user = await _userManager.GetUserAsync(User);
+
+            return View(await _context.Assignment.Where(a => a.UserId == user.Id).ToListAsync());
         }
 
         // GET: Assignments/Details/5
@@ -58,6 +64,9 @@ namespace ADSBackend.Controllers
         {
             if (ModelState.IsValid)
             {
+                ApplicationUser user = await _userManager.GetUserAsync(User);
+                assignment.UserId = user.Id;
+
                 _context.Add(assignment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

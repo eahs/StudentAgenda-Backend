@@ -27,6 +27,8 @@
     <Compile Remove="Migrations\20210103011423_AAssignment.Designer.cs" />
     <Compile Remove="Migrations\20210223000813_Assignment.cs" />
     <Compile Remove="Migrations\20210223000813_Assignment.Designer.cs" />
+    <Compile Remove="Migrations\20210407150612_AssociatedAssignmentWithUser.cs" />
+    <Compile Remove="Migrations\20210407150612_AssociatedAssignmentWithUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
