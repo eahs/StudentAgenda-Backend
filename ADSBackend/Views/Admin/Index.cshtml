@@ -91,7 +91,7 @@
 
                 </div>
 
-                <a asp-controller="Assignments" class="btn btn-primary">
+                <a asp-controller="Assignments" class="btn btn-danger">
                     <span class="fa fa-search"></span> View All Assignments
 
 
@@ -108,33 +108,33 @@
             </div>
             <div class="ibox-content">
                 <p>It's how you log in!</p>
-                <a asp-controller="Manage" asp-action="Index" class="btn btn-default">
+                <a asp-controller="Manage" asp-action="Index" class="btn btn-danger">
                     <span class="fa fa-user-circle-o"></span> Manage Account
                 </a>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-87">
             <div class="ibox">
                 <div class="ibox-title">
                     <h5>Configuration</h5>
                 </div>
                 <div class="ibox-content">
                     <p>Configuration stuff here.</p>
-                    <a asp-controller="Configuration" asp-action="Index" class="btn btn-default">
+                    <a asp-controller="Configuration" asp-action="Index" class="btn btn-danger">
                         <span class="fa fa-cog"></span> Update Configuration
                     </a>
                 </div>
 
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-87">
             <div class="ibox">
                 <div class="ibox-title">
                     <h5>Notes</h5>
                 </div>
                 <div class="ibox-content">
                     <p>Add and edit your notes here!</p>
-                    <a asp-controller="UserNotes" asp-action="Index" class="btn btn-default">
+                    <a asp-controller="UserNotes" asp-action="Index" class="btn btn-danger">
                         <span class="fa fa-pencil"></span> Notes
                     </a>
                 </div>
@@ -143,11 +143,7 @@
         </div>
     </div>
 
-    <div class="col-lg-4">
-        <div class="ibox">
-            <img src="~/images/STAJA.png" />
-        </div>
-    </div>
+    
 </div>
 }
 @if (User.IsInRole("User"))
@@ -235,7 +231,7 @@
 
                     </div>
 
-                    <a asp-controller="Assignments" class="btn btn-primary">
+                    <a asp-controller="Assignments" class="btn btn-danger">
                         <span class="fa fa-search"></span> View All Assignments
 
 
@@ -252,7 +248,7 @@
                 </div>
                 <div class="ibox-content">
                     <p>It's how you log in!</p>
-                    <a asp-controller="Manage" asp-action="Index" class="btn btn-default">
+                    <a asp-controller="Manage" asp-action="Index" class="btn btn-danger">
                         <span class="fa fa-user-circle-o"></span> Manage Account
                     </a>
                 </div>
@@ -265,7 +261,7 @@
                 </div>
                 <div class="ibox-content">
                     <p>Add and edit your notes here!</p>
-                    <a asp-controller="UserNotes" asp-action="Index" class="btn btn-default">
+                    <a asp-controller="UserNotes" asp-action="Index" class="btn btn-danger">
                         <span class="fa fa-pencil"></span> Notes
                     </a>
                 </div>
