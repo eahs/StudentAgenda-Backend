@@ -17,23 +17,23 @@
             </h1>
         </div>
         <br />
-        <h3>Welcome to Student Agenda!</h3>
-        <p>
+        <h3 style="color:white">Welcome to Student Agenda!</h3>
+        <p style="color:white">
             The perfect place to keep track of due dates for recent assignments and much more! 
         </p>
         <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group" style="color:white">
                 <label asp-for="Username"></label>
                 <input asp-for="Username" class="form-control" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="color:white">
                 <label asp-for="Password"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="color:white">
                 <div class="checkbox">
                     <label asp-for="RememberMe">
                         <input asp-for="RememberMe" />
@@ -43,7 +43,7 @@
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
             <div class="form-group">
-                <a asp-action="ForgotPassword">Forgot your password?</a>
+                <a asp-action="ForgotPassword" style="color:white">Forgot your password?</a>
             </div>
         </form>
         <p class="m-t"><small>Rubick &copy; @ViewData["CopyrightYear"]</small></p>
