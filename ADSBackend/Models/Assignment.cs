@@ -34,7 +34,7 @@ namespace ADSBackend.Models
         public string Description { get; set; }
 
 
-        [Display(Name = "Estimated Amount of Time Needed (hours)")]
+        [Display(Name = "Estimated Time Needed (hours)")]
         public double TimeNeeded { get; set; }
 
 
@@ -46,14 +46,14 @@ namespace ADSBackend.Models
 
 
         [DataType(DataType.Date)]
-        [Display(Name = "Is there a specific date on which you'd like to complete this assignment? (leave blank if not)")]
+        [Display(Name = "Specific Date (Optional)")]
 
         public DateTime? DateChoice { get; set; }
         
 
         [DataType(DataType.Time)]
 
-        [Display(Name = "Is there a specific time on which you'd like to complete this assignment? (leave blank if not)")]
+        [Display(Name = "Specific Time (Optional)")]
 
         public DateTime? TimeChoice { get; set; }
 
